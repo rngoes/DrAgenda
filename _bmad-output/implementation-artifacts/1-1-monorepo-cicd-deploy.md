@@ -4,7 +4,7 @@ baseline_commit: NO_VCS
 
 # Story 1.1: Monorepo com CI/CD e Deploy Base
 
-Status: review
+Status: done
 
 ## Story
 

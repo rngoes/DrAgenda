@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:        #FFFFFF;
+  --bg-subtle:      #F8FAFC;
+  --bg-muted:       #F1F5F9;
+  --border:         #E2E8F0;
+  --text-primary:   #0F172A;
+  --text-secondary: #64748B;
+  --text-disabled:  #CBD5E1;
+  --overlay:        rgba(15, 23, 42, 0.5);
+
+  --background: var(--bg-base);
+  --foreground: var(--text-primary);
+  --primary: #0D9488;
+  --primary-foreground: #FFFFFF;
+  --muted: var(--bg-muted);
+  --muted-foreground: var(--text-secondary);
+  --border-color: var(--border);
+  --radius: 8px;
+}
+
+.dark {
+  --bg-base:        #0F172A;
+  --bg-subtle:      #1E293B;
+  --bg-muted:       #334155;
+  --border:         #334155;
+  --text-primary:   #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-disabled:  #475569;
+  --overlay:        rgba(0, 0, 0, 0.7);
+
+  --background: var(--bg-base);
+  --foreground: var(--text-primary);
+}
+
+/* Ativa dark mode automaticamente via preferência do sistema */
+@media (prefers-color-scheme: dark) {
+  html { @apply dark; }
+}
+
+/* Previne zoom automático iOS/Android em campos de formulário */
+input, textarea, select, label {
+  font-size: 16px;
+}

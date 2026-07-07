@@ -10,8 +10,16 @@ spring:
       hibernate:
         format_sql: true
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
   flyway:
     enabled: true
+
+admin:
+  seed:
+    password: ${ADMIN_SEED_PASSWORD:admin123@Dev}  # default apenas para dev local
 
 logging:
   level:

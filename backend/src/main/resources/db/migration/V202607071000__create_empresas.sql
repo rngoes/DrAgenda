@@ -1,0 +1,6 @@
+CREATE TABLE empresas (
+    id         BIGINT       AUTO_INCREMENT PRIMARY KEY,
+    nome       VARCHAR(255) NOT NULL,
+    ativo      BOOLEAN      NOT NULL DEFAULT TRUE,
+    created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

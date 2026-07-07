@@ -1,6 +1,6 @@
 # Story 1.3: Fundação do Frontend — Design Tokens, Roteamento e Layout Base
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -446,13 +446,44 @@ O `npx shadcn-ui@latest init` gera seu próprio `globals.css` com CSS variables 
 ## Dev Agent Record
 
 ### Agent Model Used
-
-_a preencher pelo agente dev_
-
-### Debug Log References
+Claude Sonnet 4.6 (GitHub Copilot)
 
 ### Completion Notes List
+- Shadcn/ui init interativo substituído por `components.json` manual + `npx shadcn@latest add --yes`
+- Bug Windows: Shadcn criou pasta `@` literal na raiz em vez de `src/` — arquivos movidos manualmente para `src/shared/components/ui/` e `src/shared/hooks/`
+- 3 erros de lint em arquivos Shadcn gerados corrigidos com eslint-disable inline
+- `@typescript-eslint/eslint-plugin` separado não instalado (conflito de peer) — já incluído via `typescript-eslint` unified
+- `ignoreDeprecations: "6.0"` adicionado ao tsconfig.app.json para suprimir aviso de `baseUrl` no TypeScript 6
+- Build local validado: `npm run build`, `npm run lint`, `npm run type-check` todos ✅
 
 ### File List
-
-_a preencher após implementação_
+- `frontend/tailwind.config.ts` — NEW
+- `frontend/postcss.config.js` — NEW
+- `frontend/components.json` — NEW (Shadcn config)
+- `frontend/src/styles/globals.css` — NEW
+- `frontend/src/shared/lib/queryClient.ts` — NEW
+- `frontend/src/shared/lib/axios.ts` — NEW
+- `frontend/src/shared/lib/utils.ts` — NEW
+- `frontend/src/shared/hooks/useAuth.ts` — NEW
+- `frontend/src/shared/components/ProtectedRoute.tsx` — NEW
+- `frontend/src/shared/components/ui/button.tsx` — NEW (Shadcn)
+- `frontend/src/shared/components/ui/dialog.tsx` — NEW (Shadcn)
+- `frontend/src/shared/components/ui/sheet.tsx` — NEW (Shadcn)
+- `frontend/src/shared/components/ui/toast.tsx` — NEW (Shadcn)
+- `frontend/src/shared/components/ui/toaster.tsx` — NEW (Shadcn)
+- `frontend/src/shared/components/ui/badge.tsx` — NEW (Shadcn)
+- `frontend/src/shared/hooks/use-toast.ts` — NEW (Shadcn)
+- `frontend/src/pages/LoginPage.tsx` — NEW
+- `frontend/src/pages/AgendaPage.tsx` — NEW
+- `frontend/src/pages/BuscarPage.tsx` — NEW
+- `frontend/src/pages/ClientesPage.tsx` — NEW
+- `frontend/src/pages/ConfiguracoesPage.tsx` — NEW
+- `frontend/src/pages/MenuPage.tsx` — NEW
+- `frontend/src/pages/AutoatendimentoPage.tsx` — NEW
+- `frontend/src/pages/PoliticaPage.tsx` — NEW
+- `frontend/index.html` — UPDATED (Google Fonts, lang pt-BR, title)
+- `frontend/src/main.tsx` — UPDATED (QueryClientProvider, globals.css)
+- `frontend/src/App.tsx` — UPDATED (rotas completas)
+- `frontend/tsconfig.app.json` — UPDATED (strict, path aliases, ignoreDeprecations)
+- `frontend/vite.config.ts` — UPDATED (resolve alias @/)
+- `frontend/package.json` — UPDATED (scripts lint/type-check)

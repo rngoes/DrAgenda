@@ -1,0 +1,40 @@
+# Binários e artefatos de build
+target/
+*.class
+*.jar
+*.war
+dist/
+build/
+
+# Dependências Node
+node_modules/
+.npm
+
+# Variáveis de ambiente (NUNCA commitar)
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.idea/
+*.iml
+.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# PWA
+public/sw.js
+public/workbox-*.js

@@ -1,0 +1,71 @@
+{
+    "servers": {
+		// MCP do Azure DevOps
+        "azureDevOps": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@tiberriver256/mcp-server-azure-devops"
+            ],
+            "env": {
+                "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/hapvidalabs",
+                "AZURE_DEVOPS_AUTH_METHOD": "pat",
+                "AZURE_DEVOPS_PAT": "[TOKEN PAT]",
+                "AZURE_DEVOPS_DEFAULT_PROJECT": "TI - Arquitetura - Wiki",
+                "AZURE_DEVOPS_API_VERSION": "7.1",
+                "NODE_ENV": "production"
+            }
+        },
+		// Navega no browser de forma automática para o MCP do Playwright
+		"playwright": {
+			"command": "npx",
+			"args": [
+				"@playwright/mcp@latest",
+				"--output-dir",
+				"C:\\test-case"
+			]
+		},
+		// MCP do Memory para gerenciar o contexto de modelos
+		"memory": {
+      		"command": "npx",
+      		"args": [
+        		"-y",
+				"@modelcontextprotocol/server-memory"
+      		]
+    	},
+		// MCP do Sequential Thinking para gerenciar o fluxo de pensamento sequencial
+		"sequential-thinking": {
+      		"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-sequential-thinking"
+			]
+    	},
+		//MCP do Task Master AI para gerenciar tarefas e projetos
+		"task-master-ai": {
+		"command": "npx",
+		"args": ["-y", "--package=task-master-ai", "task-master-ai"],
+		"env": {
+			//"ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
+			//"PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
+			//"OPENAI_API_KEY": "YOUR_OPENAI_KEY_HERE",
+			"GOOGLE_API_KEY": "[TOKEN GOOGLE]",
+			//"MISTRAL_API_KEY": "YOUR_MISTRAL_KEY_HERE",
+			//"GROQ_API_KEY": "YOUR_GROQ_KEY_HERE",
+			//"OPENROUTER_API_KEY": "YOUR_OPENROUTER_KEY_HERE",
+			//"XAI_API_KEY": "YOUR_XAI_KEY_HERE",
+			//"AZURE_OPENAI_API_KEY": "d2925a4cd67a40a3add78f495ed353d4",
+			//"OLLAMA_API_KEY": "YOUR_OLLAMA_API_KEY_HERE"
+		},
+		"type": "stdio"
+		},
+		// MCP Server personalizado - Contexto
+		"context7": {
+          "type": "http",
+          "url": "https://mcp.context7.com/mcp",
+          "headers": {
+             "CONTEXT7_API_KEY": "[TOKEN CONTEXTO7]"
+           }
+        }
+	}
+}

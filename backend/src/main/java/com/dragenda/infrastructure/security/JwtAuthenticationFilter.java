@@ -63,9 +63,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        // Verificar senha temporária — bloquear todas as rotas exceto trocar-senha
+        // Verificar senha temporária — bloquear todas as rotas exceto auth/** e trocar-senha
         if (usuario.isSenhaTemporaria()
-                && !request.getRequestURI().equals("/api/v1/auth/trocar-senha")) {
+                && !request.getRequestURI().startsWith("/api/v1/auth/")) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(

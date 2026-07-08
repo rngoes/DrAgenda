@@ -1,6 +1,6 @@
 # Story 1.4: Página Pública de Política de Privacidade
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -256,13 +256,14 @@ Após completar e revisar todas as stories do Epic 1, o Epic 2 pode ser iniciado
 ## Dev Agent Record
 
 ### Agent Model Used
-
-_a preencher pelo agente dev_
-
-### Debug Log References
+Claude Sonnet 4.6 (GitHub Copilot)
 
 ### Completion Notes List
+- `constants.ts` já existia (criado pelo Shadcn init na Story 1.3) — `TERMO_VERSAO_VIGENTE` adicionado ao arquivo existente
+- Build, lint e type-check validados localmente antes do push
 
 ### File List
-
-_a preencher após implementação_
+- `frontend/src/pages/PoliticaPage.tsx` — UPDATED (stub → conteúdo real com 4 seções LGPD)
+- `frontend/src/pages/LoginPage.tsx` — UPDATED (adicionado rodapé com link)
+- `frontend/src/pages/AutoatendimentoPage.tsx` — UPDATED (adicionado rodapé com link)
+- `frontend/src/shared/lib/constants.ts` — NEW (`TERMO_VERSAO_VIGENTE = 'v1.0'`)

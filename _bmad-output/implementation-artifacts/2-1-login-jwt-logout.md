@@ -1,6 +1,6 @@
 # Story 2.1: Login, JWT Multi-Tenant e Logout
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -543,13 +543,39 @@ jwt:
 ## Dev Agent Record
 
 ### Agent Model Used
-
-_a preencher pelo agente dev_
-
-### Debug Log References
+Claude Sonnet 4.6 (GitHub Copilot)
 
 ### Completion Notes List
+- JJWT 0.12.6 já no pom.xml da Story 1.1 — Task 1 skip
+- 3 bugs encontrados durante teste local e corrigidos:
+  1. `JwtService`: `Decoders.BASE64` não aceita caractere `_` (Base64URL) — corrigido para `Decoders.BASE64URL`
+  2. `SecurityConfig`: rota `/error` não estava em `permitAll()` — Spring retornava 403 ao encaminhar exceções para `/error`
+  3. `JwtAuthenticationFilter`: bloco de senha temporária bloqueava `/api/v1/auth/login` — corrigido para ignorar toda a rota `/api/v1/auth/**`
+- `application-dev.yml` tinha chave `jpa` duplicada (YAML inválido) — corrigido
+- `application-dev.yml` tinha credenciais hardcoded — corrigido para usar `${DB_URL}`, `${DB_USERNAME}`, `${DB_PASSWORD}`
+- Perfil `local` (H2) criado para dev sem MySQL
+- Proxy Vite configurado em `vite.config.ts` para encaminhar `/api/**` ao backend
+- Login validado localmente: `admin@agenda.com` redireciona para `/trocar-senha` (senha temporária = true) ✅
 
 ### File List
-
-_a preencher após implementação_
+**Backend:**
+- `backend/src/main/java/com/dragenda/infrastructure/security/JwtService.java` — NEW
+- `backend/src/main/java/com/dragenda/infrastructure/security/JwtAuthenticationFilter.java` — NEW
+- `backend/src/main/java/com/dragenda/infrastructure/security/SecurityUtils.java` — NEW
+- `backend/src/main/java/com/dragenda/infrastructure/config/SecurityConfig.java` — UPDATED
+- `backend/src/main/java/com/dragenda/api/controllers/AuthController.java` — NEW
+- `backend/src/main/java/com/dragenda/api/dtos/request/LoginRequest.java` — NEW
+- `backend/src/main/java/com/dragenda/api/dtos/response/LoginResponse.java` — NEW
+- `backend/src/main/java/com/dragenda/api/exceptions/GlobalExceptionHandler.java` — NEW
+- `backend/src/main/java/com/dragenda/domain/services/AuthService.java` — NEW
+- `backend/src/test/java/com/dragenda/domain/services/AuthServiceTest.java` — NEW
+- `backend/src/test/java/com/dragenda/infrastructure/security/JwtServiceTest.java` — NEW
+- `backend/src/main/resources/application-dev.yml` — UPDATED
+- `backend/src/main/resources/application-local.yml` — NEW
+- `backend/pom.xml` — UPDATED (H2 scope: test → runtime)
+**Frontend:**
+- `frontend/src/pages/LoginPage.tsx` — UPDATED (formulário completo)
+- `frontend/src/pages/MenuPage.tsx` — UPDATED (botão Sair)
+- `frontend/src/shared/hooks/useLogout.ts` — NEW
+- `frontend/vite.config.ts` — UPDATED (proxy /api)
+- `frontend/.env.local` — NEW (VITE_API_URL local)

@@ -1,18 +1,16 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/dragenda_dev?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: root
-
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+    url: ${DB_URL:jdbc:mysql://localhost:3306/dragenda_dev?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
 
   jpa:
     hibernate:
       ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
   flyway:
     enabled: true
